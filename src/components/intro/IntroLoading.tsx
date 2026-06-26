@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import zaojingDome from "../../assets/images/zaojing_dome_user.png";
+const zaojingDome = "https://i.ibb.co/wN4JS6fB/3.png";
 
 type IntroLoadingProps = {
   onComplete: () => void;
@@ -240,19 +240,6 @@ export function IntroLoading({ onComplete }: IntroLoadingProps) {
                 zIndex: 10,
               }}
             >
-              <h2
-                style={{
-                  fontFamily: '"Noto Serif SC", serif',
-                  color: "#f5ead7",
-                  fontSize: "22px",
-                  fontWeight: 400,
-                  letterSpacing: "0.25em",
-                  textShadow: "0 2px 10px rgba(0,0,0,0.8)",
-                  margin: 0,
-                }}
-              >
-                敦煌藻井 艺术转译
-              </h2>
               <p
                 style={{
                   fontFamily: "sans-serif",
@@ -269,39 +256,7 @@ export function IntroLoading({ onComplete }: IntroLoadingProps) {
         )}
       </AnimatePresence>
 
-      {/* Elegant Skip Button - Always available at the top right so the user has immediate control */}
-      <button
-        onClick={onComplete}
-        style={{
-          position: "absolute",
-          top: "40px",
-          right: "40px",
-          background: "rgba(5, 4, 3, 0.6)",
-          border: "1px solid rgba(201, 166, 70, 0.3)",
-          borderRadius: "999px",
-          color: "rgba(245, 234, 215, 0.8)",
-          fontFamily: '"Noto Serif SC", serif',
-          fontSize: "13px",
-          padding: "8px 20px",
-          cursor: "pointer",
-          transition: "all 0.3s ease",
-          zIndex: 10000,
-          backdropFilter: "blur(8px)",
-          letterSpacing: "0.1em",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "#c9a646";
-          e.currentTarget.style.color = "#f5ead7";
-          e.currentTarget.style.boxShadow = "0 0 15px rgba(201, 166, 70, 0.15)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "rgba(201, 166, 70, 0.3)";
-          e.currentTarget.style.color = "rgba(245, 234, 215, 0.8)";
-          e.currentTarget.style.boxShadow = "none";
-        }}
-      >
-        跳过 ➔
-      </button>
+
     </div>
   );
 }

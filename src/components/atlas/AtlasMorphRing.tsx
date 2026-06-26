@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import type { OverviewImageSlot } from "../../data/overviewImages";
 

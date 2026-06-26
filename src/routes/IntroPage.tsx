@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import zaojingDome from "../assets/images/zaojing_dome_user.png";
-import titleCalligraphy from "../assets/images/title_calligraphy.png";
 import { IntroLoading } from "../components/intro/IntroLoading";
 import { IntroVideo } from "../components/intro/IntroVideo";
+
+const titleCalligraphy = "https://i.ibb.co/7JhkjF5Q/image-55.png";
+const zaojingDome = "https://i.ibb.co/wN4JS6fB/3.png";
 
 const DESIGN_W = 1920;
 const DESIGN_H = 1080;
@@ -103,30 +104,32 @@ export function IntroPage() {
           pointerEvents: phase === "main" ? "auto" : "none"
         }}
       >
+        {/* 背景：藻井图 铺满整个画面 (object-fit: cover) */}
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 1 }}>
+          <motion.img
+            src={zaojingDome}
+            alt="Dunhuang Zaojing Dome"
+            referrerPolicy="no-referrer"
+            initial={{ scale: 1.15 }}
+            animate={{ scale: phase === "main" ? 1.0 : 1.15 }}
+            transition={{ duration: 4.5, ease: [0.16, 1, 0.3, 1] }}
+            style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }}
+          />
+        </div>
+
+        {/* 黑色半透明遮罩 - 增强文字对比度，铺满整个画面 */}
+        <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.64)", zIndex: 2 }} />
+
         <div
           ref={innerRef}
           style={{
             position: "absolute",
             width: DESIGN_W,
             height: DESIGN_H,
-            transformOrigin: "top left"
+            transformOrigin: "top left",
+            zIndex: 3
           }}
         >
-          {/* 背景：藻井图 1920x1080 平铺整个页面 */}
-          <div style={{ position: "absolute", top: 0, left: 0, width: 1920, height: 1080, overflow: "hidden" }}>
-            <motion.img
-              src={zaojingDome}
-              alt="Dunhuang Zaojing Dome"
-              referrerPolicy="no-referrer"
-              initial={{ scale: 1.15 }}
-              animate={{ scale: phase === "main" ? 1.0 : 1.15 }}
-              transition={{ duration: 4.5, ease: [0.16, 1, 0.3, 1] }}
-              style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }}
-            />
-          </div>
-
-          {/* 黑色半透明遮罩 - 增强文字对比度 */}
-          <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.64)" }} />
 
           {/* 核心书法字标题居中 */}
           <motion.div
