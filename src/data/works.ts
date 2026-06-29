@@ -26,7 +26,7 @@ type WorkRecord = {
   sourceTitle?: string;
 };
 
-const imageBasePath = "/assets/zaojing/originals";
+const imageBasePath = "https://raw.githubusercontent.com/m2290882257-maker/zaojingji/main/public/assets/zaojing/originals";
 
 const getLocation = (cave: string) => {
   if (cave.includes("榆林")) {
